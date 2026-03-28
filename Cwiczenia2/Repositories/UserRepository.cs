@@ -1,6 +1,8 @@
 ﻿using System.Collections.Immutable;
+using Cwiczenia2.Interfaces;
+using Cwiczenia2.Models;
 
-namespace Cwiczenia2.Models;
+namespace Cwiczenia2.Repositories;
 
 public class UserRepository(Dictionary<Guid, User>? users = null) : IUserRepository
 {
@@ -12,12 +14,5 @@ public class UserRepository(Dictionary<Guid, User>? users = null) : IUserReposit
         user.Id = Guid.NewGuid();
         _users[user.Id.Value] = user;
     }
-}
-
-public interface IUserRepository
-{
-    void AddUser(User user);
-    IEnumerable<User> GetAllUsers();
-    User? GetUserById(Guid id);
 }
 

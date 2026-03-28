@@ -7,15 +7,8 @@ public abstract class User(string name, string surname, Guid? id = null)
     public string Surname { get; init; } = surname;
     public string UserType => this.GetType().Name;
     public abstract int MaxActiveRentals { get; }
-}
 
-public class Employee(string name, string surname, double salary, Guid? id = null) : User(name, surname, id)
-{
-    private const int _maxActiveRentalsForEmployee = 5;
-
-    public override int MaxActiveRentals => _maxActiveRentalsForEmployee;
-
-    double Salary { get; set; } = salary;
+    public override string ToString() => $"{Id} - {Name}, {Surname}, {UserType}";
 }
 public class Student(string name, string surname, int currentSemester, Guid? id = null) : User(name, surname, id)
 {
